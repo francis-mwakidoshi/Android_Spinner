@@ -3,16 +3,12 @@ package com.example.sly.spinner;
 import android.app.Activity;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.support.v7.app.AlertDialog;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,8 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.sly.spinner.R.id.spinner;
-import static com.example.sly.spinner.R.id.spinner2;
+
 
 
 //public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener
@@ -29,20 +24,20 @@ import static com.example.sly.spinner.R.id.spinner2;
 public class MainActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
     Button btnSubmit;
-    EditText newSpinnerItemText;
+    Spinner spinner;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         btnSubmit =  findViewById(R.id.btnSubmit);
-        newSpinnerItemText = findViewById(R.id.newSpinnerItemText);
+        spinner = findViewById(R.id.spinner);
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                validateEditTexts();
+               // validateEditTexts();
 
-                if(check){
+                if(1 <= spinner.getSelectedItemPosition()){
 
                     //perform when user select spinner item
 
@@ -128,7 +123,7 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
 
     }
 
-    int temp = 0;
+    Boolean temp = false;
     Boolean check = false;
 
     @Override
@@ -142,10 +137,10 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
 
         */
-        if(temp == 0){
+        if(temp){
             check = false;
         }
-        temp = 0;
+       temp = true;
 
     }
 
@@ -156,25 +151,26 @@ public class MainActivity extends Activity implements AdapterView.OnItemSelected
     }
 
     // function to validate edittexts
-
+/*
     private boolean validateEditTexts() {
         boolean valid = true;
-
+     /*
 
         if (newSpinnerItemText.getText().toString().trim().equals("")) {
             newSpinnerItemText.requestFocus(); //to show message
             newSpinnerItemText.setError("Please enter something");  // icon only
             valid = false;
         }
+        */
 
 
         // Similarly check all your EditTexts here and set the value of valid
 
-        return valid;
+       // return valid;
 
 
     }
 
 
-}
+
 
